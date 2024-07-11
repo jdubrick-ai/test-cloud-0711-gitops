@@ -1,0 +1,19 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata: 
+  labels: 
+    app.kubernetes.io/instance: test02
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/name: test02 
+  name: test02
+spec:
+  port:
+    targetPort: 8501
+  tls:
+    insecureEdgeTerminationPolicy: Redirect
+    termination: edge
+  to:
+    kind: Service
+    name: test02 
+    weight: 100 
+  wildcardPolicy: None
